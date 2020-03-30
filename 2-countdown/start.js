@@ -4,22 +4,24 @@
     const HOUR = MINUTE * 60
     const DAY = HOUR * 24
 
+    const setInnerText = (id, text) => {
+        const element = document.getElementById(id)
+        element.innerText = text
+    }
+
     const countdown = () => {
         const now = new Date().getTime()
         const olympic = new Date('July 22 2021 23:59:59').getTime()
         const unixTimeLeft = olympic - now;
-        const daysElement = document.getElementById("days")
-        daysElement.innerText = Math.floor(unixTimeLeft / DAY)
-        const hoursElement = document.getElementById("hours")
-        hoursElement.innerText = Math.floor(unixTimeLeft % DAY / HOUR)
-        const minutesElement = document.getElementById("minutes")
-        minutesElement.innerText = Math.floor(unixTimeLeft % HOUR / MINUTE)
-        const secondsElement = document.getElementById("seconds")
-        secondsElement.innerText = Math.floor(unixTimeLeft % MINUTE / SECOND)
+        setInnerText("days", Math.floor(unixTimeLeft / DAY))
+        setInnerText("hours", Math.floor(unixTimeLeft % DAY / HOUR))
+        setInnerText("minutes", Math.floor(unixTimeLeft % HOUR / MINUTE))
+        setInnerText("seconds", Math.floor(unixTimeLeft % MINUTE / SECOND))
     }
 
     const run = () => {
         countdown()
+        setInterval(countdown, SECOND)
     }
 
     run()
