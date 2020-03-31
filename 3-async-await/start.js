@@ -32,8 +32,21 @@
         })
     }
 
-    simulateAsyncAPIPromise('A', 1000)
-        .then(() => simulateAsyncAPIPromise('B', 500))
-        .then(() => simulateAsyncAPIPromise('C', 100))
+    // simulateAsyncAPIPromise('A', 1000)
+    //     .then(() => simulateAsyncAPIPromise('B', 500))
+    //     .then(() => simulateAsyncAPIPromise('C', 100))
+    //     .catch(() => console.error('error!'))
+
+    async function run() {
+        try {
+            await simulateAsyncAPIPromise('A', 1000)
+            await simulateAsyncAPIPromise('B', 500)
+            await simulateAsyncAPIPromise('C', 100)   
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    run()
     
 })()
