@@ -9,7 +9,9 @@
     const simulateAsyncAPICallback = (text, timeout, callback) => {
         setTimeout(() => {
             console.log(text)
-            callback()
+            if (callback) {
+                callback()
+            }
         }, timeout)
     }
 
