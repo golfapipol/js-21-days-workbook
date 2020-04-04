@@ -28,11 +28,36 @@
     }
     const moveDuck = (duckElement, duck) => {
         const {left, top} = duckElement.getBoundingClientRect()
+        const outOfBoundX = duck.x < 0 || duck.x > window.innerWidth
+        const outOfBoundY = duck.y < 0 || duck.y > window.innerHeight
+
+        if (outOfBoundX) {
+            duck.speedX *= -1
+        }
+        if (outOfBoundY) {
+            duck.speedY *= -1
+        }
         duck.x = left + duck.speedX
         duck.y = top - duck.speedY
         duckElement.style.left = `${duck.x}px`
         duckElement.style.top = `${duck.y}px`
         duckElement.style.backgroundImage = getDuckBackgroundImage(duck, duckElement)
+    }
+    const fireDuck = (event) => {
+        const duckElement = event.target;
+        duckElement.style.transition = 'top 2s'
+        duckElement.style.top = `${window.innerHeight}px`
+        clearInterval(duckElement.interval)
+
+        setTimeout(() => {
+            document.body.removeChild(duckElement)
+
+            const duck = document.querySelector('.duck')
+            if (!duck) {
+                const winningElement = document.querySelector('.winning')
+                winningElement.style.opacity = 1
+            }
+        }, 2000)
     }
 
     const run = () => {
@@ -40,7 +65,8 @@
         const duckElements = ducks.map(setupDuckElement)
 
         duckElements.forEach(({duck, duckElement}) => {
-            setInterval(() => moveDuck(duckElement, duck), 100)
+            duckElement.interval = setInterval(() => moveDuck(duckElement, duck), 100)
+            duckElement.addEventListener('click', fireDuck)
         })
     }
     run()
