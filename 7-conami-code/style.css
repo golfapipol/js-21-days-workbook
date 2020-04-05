@@ -1,0 +1,23 @@
+body {
+    background-image: url('./background.jpg');
+    background-size: cover;
+}
+
+.keyboard {
+    font-size: 6em;
+    text-transform: uppercase;
+
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active {
+    color: rgb(39, 233, 247);
+}
+
+.code {
+    display: inline-flex;
+    list-style-type: none;
+}
