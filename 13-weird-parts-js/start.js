@@ -20,6 +20,8 @@
     // 3 > 2 > 1
     // true > 1 
     // false
-    
-    
+    // console.log(2 - '1') // - convert 1 to int
+    // console.log(2 + '1') // + see string convert 2 to string
+    // console.log(true + true) // cast true = 1
+
 })()
