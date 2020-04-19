@@ -33,4 +33,10 @@
         }
     }
     console.log(getPerson())
+    // 4. Checking Object Type
+    // null is obj
+    const person = null
+    if (typeof person ==='object') {
+        console.log('null is obj')
+    }
 })()
