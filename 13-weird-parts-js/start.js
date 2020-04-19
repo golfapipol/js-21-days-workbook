@@ -24,4 +24,13 @@
     // console.log(2 + '1') // + see string convert 2 to string
     // console.log(true + true) // cast true = 1
 
+    // 3. Interpreter & Compiler
+    function getPerson() {
+        // be careful with auto add ; 
+        return  // <- { should be here
+        { // <- not here
+            name: 'Golf'
+        }
+    }
+    console.log(getPerson())
 })()
